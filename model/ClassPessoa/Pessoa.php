@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\ClassManagementSession;
+namespace Model\ClassPessoa;
 
 use Exception;
 use Model\ClassValidations\Validations;
@@ -27,16 +27,33 @@ class Pessoa{
     private $estado_uf;
 
 
-    public function setDataUpdate($dados){
+    public function dataUpdate($dados){
+
+        if($dados['id']>0 && $dados['id'] != ""){
+            $this->idPessoa=$dados['id'];
+        }
+        else{
+            throw Error('Houve um erro interno no servidor');
+        }
+       
+
+        // $validator = new Validations();
+        // echo '<pre>';
+        // print_r($dados);
+        // echo '</pre>';
+
+        $_SESSION['usuario'][0] = $dados;
+        // $_SESSION['usuario']["telefones"];
+        
 
     }
 
 
-    public function setDataInsert($dados){
+    public function dataInsert($dados){
         
     }
 
-    public function setDataDelete($dados){
+    public function dataDelete($dados){
         
     }
 

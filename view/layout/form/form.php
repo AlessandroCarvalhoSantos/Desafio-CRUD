@@ -80,36 +80,57 @@ if(isset($_SESSION['usuario'][0]['ufSigla'])){
 if(isset($_SESSION['usuario'][0]['endereco_id'])){
     $enderecoId = $_SESSION['usuario'][0]['endereco_id'];
 }else{
-    $enderecoId="";
+    $enderecoId=0;
 }
 
 
 if(isset($_SESSION['usuario'][0]['id'])){
     $pessoaId = $_SESSION['usuario'][0]['id'];
 }else{
-    $pessoaId="";
+    $pessoaId=0;
 }
 
 
+if(isset($_SESSION['usuario'][0]['senha1'])){
+    $senha1 = $_SESSION['usuario'][0]['senha1'];
+}else{
+    $senha1="";
+}
 
+if(isset($_SESSION['usuario'][0]['senha2'])){
+    $senha2 = $_SESSION['usuario'][0]['senha2'];
+}else{
+    $senha2="";
+}
 
 ?>
 
 
 
 
+
 <div class=" p-5" style="background-color: rgb(240, 240, 240);">
+
+    <?php
+        if(isset($_SESSION['errorForm'])){
+            echo'<div class="alert alert-primary" role="alert">
+                '.$_SESSION['errorForm'].'
+            </div>';
+            unset($_SESSION['errorForm']);
+        }
     
-    <form method="POST" class="row g-3" action="<?=$formPost?>">
+    ?>
+    
+    <form method="POST"  class="row g-3" action="<?=$formPost?>">
            
             <div class="col-12  text-center text-md-start">
                 <h3 class="m-0 mb-1 pt-2 fw-bold">Cadastrar pessoa</h3>
             </div>
 
-            <input type="date" hidden class="form-control shadow-none"  name="dtAtualizacao" value="<?=$dtAtualizacao?>">
-            <input type="date" hidden class="form-control shadow-none"  name="dtExclusao" value="<?=$dtExclusao?>">
-            <input type="text" hidden class="form-control shadow-none"  name="endenecoId" value="<?=$enderecoId?>">
-            <input type="text" hidden class="form-control shadow-none"  name="pessoaId" value="<?=$pessoaId?>">
+            <input type="date" hidden class="form-control shadow-none"  name="data_atualizacao" value="<?=$dtAtualizacao?>">
+            <input type="date" hidden class="form-control shadow-none"  name="data_exclusao" value="<?=$dtExclusao?>">
+            <input type="text" hidden class="form-control shadow-none"  name="endereco_id" value="<?=$enderecoId?>">
+            <input type="text" hidden class="form-control shadow-none"  name="id" value="<?=$pessoaId?>">
 
 
 
@@ -125,12 +146,12 @@ if(isset($_SESSION['usuario'][0]['id'])){
 
             <div class="col-md-3">
                 <label  class="form-label"><b>Data de nascimento:</b></label>
-                <input type="date" class="form-control shadow-none"  name="dtNascimento" required value="<?=$dtNascimento?>">
+                <input type="date" class="form-control shadow-none"  name="data_nascimento" required value="<?=$dtNascimento?>">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label"><b>Data de Cadastro:</b></label>
-                <input type="date" class="form-control shadow-none"  name="dtCadastro" required value="<?=$dtCadastro?>">
+                <input type="date" class="form-control shadow-none"  name="data_cadastro" required value="<?=$dtCadastro?>">
             </div>
 
             <div class="col-md-12">
@@ -141,18 +162,18 @@ if(isset($_SESSION['usuario'][0]['id'])){
 
             <div class="col-md-6">
                 <label class="form-label">Senha:</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha1"  minlength="5" maxlength="16">
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha1"  minlength="5" maxlength="16" value="<?=$senha1?>">
             </div>
            
             <div class="col-md-6">
                 <label class="form-label">Senha (Novamente):</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha2"  minlength="5" maxlength="50">
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha2"  minlength="5" maxlength="16" value="<?=$senha2?>">
             </div>
 
             <div class="col-md-8">
                 <label class="form-label"><b>Estado:</b></label>
 
-                <select  name="uf" required class="form-control shadow-none" >
+                <select  name="ufSigla" required class="form-control shadow-none" >
                     <option value="" <?= ($uf == '')?"selected":""?>>Selecionar estado</option>
                     <option value="AC" <?= ($uf == 'AC')?"selected":""?>>Acre</option>
                     <option value="AL" <?= ($uf == 'AL')?"selected":""?>>Alagoas</option>

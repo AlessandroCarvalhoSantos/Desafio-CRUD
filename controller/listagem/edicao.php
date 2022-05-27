@@ -48,6 +48,9 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
         $sql= "SELECT * FROM telefones WHERE id_pessoa = ".intval($_POST['codPessoa']);
         $_SESSION['usuario']["telefones"] =  $connection->execute($sql)->fetchAll(PDO::FETCH_ASSOC);
 
+        $_SESSION['usuario'][0]['cpf'] = vsprintf("%s%s%s.%s%s%s.%s%s%s-%s%s",str_split($_SESSION['usuario'][0]['cpf']));
+        $_SESSION['usuario'][0]['cep'] = vsprintf("%s%s%s%s%s-%s%s%s",str_split($_SESSION['usuario'][0]['cep']));
+
         $pageInitial->setVariablePath("../../");
         $pageInitial->setTitlePage("Home");
         $pageInitial->setPathPage("view/listagem/");
@@ -56,12 +59,12 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
 
     }
     else{
-        header("location: controller/home/home.php");
+        header("location: ../../controller/home/home.php");
         exit();
     }
   
 }else{
-    header("location: controller/negado");
+    header("location: ../../controller/negado");
     exit();
 }
 

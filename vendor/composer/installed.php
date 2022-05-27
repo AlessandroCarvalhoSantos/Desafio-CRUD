@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'a9ca79ed6f26f90ece154d0363239a841f150c9d',
         'name' => 'desafio/crud',
         'dev' => true,
     ),
     'versions' => array(
         'desafio/crud' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'a9ca79ed6f26f90ece154d0363239a841f150c9d',
             'dev_requirement' => false,
         ),
         'dg/mysql-dump' => array(

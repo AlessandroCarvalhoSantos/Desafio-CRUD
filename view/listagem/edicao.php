@@ -1,7 +1,6 @@
 <?php
 
-$_SESSION['usuario'][0]['cpf'] = vsprintf("%s%s%s.%s%s%s.%s%s%s-%s%s",str_split($_SESSION['usuario'][0]['cpf']));
-$_SESSION['usuario'][0]['cep'] = vsprintf("%s%s%s%s%s-%s%s%s",str_split($_SESSION['usuario'][0]['cep']));
+
 
 
 echo "<pre>";

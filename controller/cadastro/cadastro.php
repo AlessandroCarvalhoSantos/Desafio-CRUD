@@ -24,7 +24,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     $pageInitial->setNamePage("cadastro", "php");
     $pageInitial->execute();
 }else{
-    header("location: controller/negado");
+    header("location: ../../controller/negado");
     exit();
 }
 

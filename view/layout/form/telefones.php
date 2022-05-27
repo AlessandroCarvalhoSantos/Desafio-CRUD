@@ -19,7 +19,7 @@ if(isset($_SESSION['usuario']["telefones"][0])){
         echo '<div class="col-12 col-md-3">';
             echo '<label for="inputNome" class="form-label"><b> <span class="n-tel">'.($i+1).'</span>° Telefone:</b></label>';
             echo '<i class="fas fa-trash ms-5" style="cursor:pointer;" onclick="removeTel(this)"></i> &nbsp;';
-            echo '<input hidden type="text" class="form-control shadow-none"  name="telefoneId[]" maxlength="25" value="'.$id.'" >';
+            echo '<input hidden type="text" class="form-control shadow-none"  name="telefone[]" maxlength="25" value="'.$id.'" >';
             echo '<input type="text" required class="form-control shadow-none" oninput="string(this)" name="telefone[]" maxlength="25" value="'.$telefone.'">';
            
         echo'</div>';
