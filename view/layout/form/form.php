@@ -68,61 +68,63 @@ if(isset($_SESSION['usuario'][0]['data_cadastro'])){
     
 
             <div class="col-md-3">
-                <label for="inputNome" class="form-label"><b>CPF:</b></label>
+                <label class="form-label"><b>CPF:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="cpf" maxlength="11" value="<?=$cpf?>" required readonly>
             </div>
 
             <div class="col-md-3">
-                <label for="inputNome" class="form-label"><b>RG:</b></label>
+                <label class="form-label"><b>RG:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="rg" maxlength="20" require value="<?=$rg?>">
             </div>
 
             <div class="col-md-3">
-                <label for="inputNome" class="form-label"><b>Data de nascimento:</b></label>
+                <label  class="form-label"><b>Data de nascimento:</b></label>
                 <input type="date" class="form-control shadow-none"  name="dtNasc" require value="<?=$dtNascimento?>">
             </div>
 
             <div class="col-md-3">
-                <label for="inputNome" class="form-label"><b>Data de Cadastro:</b></label>
+                <label class="form-label"><b>Data de Cadastro:</b></label>
                 <input type="date" class="form-control shadow-none"  name="dtNasc" require value="<?=$dtCadastro?>">
             </div>
         
-            <div class="col-md-8">
-                <label for="inputNome" class="form-label"><b>Nome:</b></label>
+            <div class="col-md-6">
+                <label class="form-label"><b>Nome:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
             </div>
-            <div class="col-md-4">
-                <label for="inputPassword" class="form-label">Senha:</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="inputPassword" id="inputPassword" minlength=5 maxlength=50>
-            </div>
-           
-            <div class="col-md-4">
-                <label for="inputPassword" class="form-label">Senha (Novamente):</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="inputPassword2" id="inputPassword2" oninput="check(this)" minlength="5" maxlength="50">
-            </div>
 
-            <div class="col-md-8 col-sm-12">
-                <label for="inputEmail" class="form-label">Email</label>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
                 <input type="email" class="form-control shadow-none" oninput="string(this)" name="inputEmail" oninput="emailMask(this)" maxlength="100" >
             </div>
 
+            <div class="col-md-6">
+                <label class="form-label">Senha:</label>
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="inputPassword" id="inputPassword" minlength=5 maxlength=50>
+            </div>
+           
+            <div class="col-md-6">
+                <label class="form-label">Senha (Novamente):</label>
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="inputPassword2" id="inputPassword2" oninput="check(this)" minlength="5" maxlength="50">
+            </div>
+
+
             <div class="col-md-12">
-                <label for="inputNome" class="form-label"><b>Estado:</b></label>
+                <label class="form-label"><b>Estado:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
             </div>
 
             <div class="col-md-12">
-                <label for="inputNome" class="form-label"><b>Endereco:</b></label>
+                <label class="form-label"><b>Endereco:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
             </div>
 
             <div class="col-md-12">
-                <label for="inputNome" class="form-label"><b>CEP:</b></label>
+                <label class="form-label"><b>CEP:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
             </div>
 
             <div class="col-md-12">
-                <label for="inputNome" class="form-label"><b>Número:</b></label>
+                <label class="form-label"><b>Número:</b></label>
                 <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
             </div>
 
