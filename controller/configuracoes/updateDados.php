@@ -22,16 +22,14 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
 
 
         $pessoa = new Pessoa();
-
         $res = $pessoa->dataUpdate($_POST);
 
         if($res){
             $_SESSION['sucesso'] = "Dados Atualizados com sucesso";
         }
      
-        header("location: ../../controller/listagem/edicao.php");
+        header("location: ../../controller/configuracoes/configuracoes.php");
         exit();
-        
 
     }
     else{

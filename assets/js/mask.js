@@ -113,7 +113,7 @@ function rgMask(rg) {
 
 
 
-function numberMask(num, tam) {
+function numberMask(num, tam =20) {
   var temp = num.value;
   num.setAttribute("maxlength", tam);
   temp = num.value;

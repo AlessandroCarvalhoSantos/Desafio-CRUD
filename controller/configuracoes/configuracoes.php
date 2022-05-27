@@ -41,6 +41,9 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     WHERE pessoas.id = ".intval($_SESSION["userId"]);
     $_SESSION['usuario'] =  $connection->execute($sql)->fetchAll(PDO::FETCH_ASSOC);
 
+    $_SESSION['usuario'][0]['cpf'] = vsprintf("%s%s%s.%s%s%s.%s%s%s-%s%s",str_split($_SESSION['usuario'][0]['cpf']));
+    $_SESSION['usuario'][0]['cep'] = vsprintf("%s%s%s%s%s-%s%s%s",str_split($_SESSION['usuario'][0]['cep']));
+
 
 
     $sql= "SELECT * FROM telefones WHERE id_pessoa = ".intval($_SESSION["userId"]);

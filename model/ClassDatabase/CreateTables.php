@@ -87,7 +87,7 @@ class CreateTables{
         );
 
         $this->connection->setTable('telefones');
-        $id=$this->connection->insert($dados);
+        $this->connection->insert($dados);
 
         $dados = array(
             "id_pessoa"=> $this->id,
@@ -95,7 +95,7 @@ class CreateTables{
         );
 
         $this->connection->setTable('telefones');
-        $id=$this->connection->insert($dados);
+        $this->connection->insert($dados);
     }
 
     private function insertPessoas(){

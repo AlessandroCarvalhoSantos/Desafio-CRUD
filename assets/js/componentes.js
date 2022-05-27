@@ -27,13 +27,13 @@ function insertTel(){
   num = (num==null)?1:num+1;
   
   componente =  '<div class="col-12 col-md-3 ">';
-    componente +='<i class="fas fa-trash me-2" style="cursor:pointer;" onclick="removeTel(this)"></i> &nbsp;'; 
     componente +='<label for="inputNome" class="form-label"><b> <span class="n-tel">'+num+'</span>° Telefone:</b></label>';
+    componente +='<i class="fas fa-trash ms-5" style="cursor:pointer;" onclick="removeTel(this)"></i> &nbsp;'; 
     componente +='<input hidden type="text" class="form-control shadow-none" name="telefoneId[]" maxlength="25" value"0" >';
-    componente +='<input type="text" required class="form-control shadow-none" oninput="string(this)" name="telefone[]" maxlength="25">';
+    componente +='<input type="text" required class="form-control shadow-none" oninput="numberMask(this)" name="telefone[]" maxlength="25">';
   componente +='</div>';
 
-  divGeral.innerHTML+= componente
+  divGeral.innerHTML += componente
 
 }
 

@@ -113,10 +113,23 @@ if(isset($_SESSION['usuario'][0]['senha2'])){
 
     <?php
         if(isset($_SESSION['errorForm'])){
-            echo'<div class="alert alert-primary" role="alert">
-                '.$_SESSION['errorForm'].'
-            </div>';
+
+            echo' <div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                echo '<strong>Aviso: </strong>'.$_SESSION['errorForm'];
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo'</div>';
+
             unset($_SESSION['errorForm']);
+        }
+
+        if(isset($_SESSION['sucesso'])){
+
+            echo' <div class="alert alert-success alert-dismissible fade show" role="alert">';
+                echo '<strong>Sucesso: </strong>'.$_SESSION['sucesso'];
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo'</div>';
+
+            unset($_SESSION['sucesso']);
         }
     
     ?>
@@ -151,7 +164,7 @@ if(isset($_SESSION['usuario'][0]['senha2'])){
 
             <div class="col-md-3">
                 <label class="form-label"><b>Data de Cadastro:</b></label>
-                <input type="date" class="form-control shadow-none"  name="data_cadastro" required value="<?=$dtCadastro?>">
+                <input type="date" class="form-control shadow-none"  name="data_cadastro" readonly required value="<?=$dtCadastro?>">
             </div>
 
             <div class="col-md-12">
@@ -162,12 +175,12 @@ if(isset($_SESSION['usuario'][0]['senha2'])){
 
             <div class="col-md-6">
                 <label class="form-label">Senha:</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha1"  minlength="5" maxlength="16" value="<?=$senha1?>">
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha1"  minlength="5" maxlength="16" <?=$senhaRequired?> value="<?=$senha1?>">
             </div>
            
             <div class="col-md-6">
                 <label class="form-label">Senha (Novamente):</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha2"  minlength="5" maxlength="16" value="<?=$senha2?>">
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha2"  minlength="5" maxlength="16" <?=$senhaRequired?> value="<?=$senha2?>">
             </div>
 
             <div class="col-md-8">

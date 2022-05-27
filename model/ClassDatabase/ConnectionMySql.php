@@ -77,9 +77,10 @@ class ConnectionMySql{
   }
 
   //Método responsável por executar atualizações no banco de dados
-  public function update($where,$values){
+  public function update($values,$where){
     $fields = array_keys($values);
     $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
+   
     $this->execute($query,array_values($values));
     return true;
   }

@@ -2,18 +2,8 @@
 
 
 
-
-echo "<pre>";
-
-print_r($_SESSION['usuario']);
-
-echo "</pre>";
-
-
-
-
-
-
+// $senhaRequired= "required";
+$senhaRequired= "";
 $nomeBotao = "Atualizar";
 $formPost = $this->variablePath."controller/listagem/updateDados.php";
 include($this->variablePath."view/layout/form/form.php");
