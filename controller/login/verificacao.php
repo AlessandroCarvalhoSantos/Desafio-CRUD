@@ -54,8 +54,8 @@ use Model\ClassValidations\Validations;
                         $sessionPage->destroySession();
                         session_regenerate_id();
                     
-                        $sessionPage->setUserId(intval($dados["id"]));
-                        $sessionPage->setUser($dados['nome']);
+                        $sessionPage->setUserId(intval($dados[0]["id"]));
+                        $sessionPage->setUser($dados[0]['nome']);
                         $sessionPage->setType("a");
                         $sessionPage->createTokenSession();
 

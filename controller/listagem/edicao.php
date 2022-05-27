@@ -24,7 +24,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
         $sql = "SELECT 
         pessoas.id, 
         pessoas.endereco_id,
-        pessoas.nome, 
+        pessoas.nome,  
         pessoas.senha, 
         pessoas.cpf, 
         pessoas.rg, 

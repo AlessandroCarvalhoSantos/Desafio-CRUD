@@ -22,7 +22,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     pessoas.id, 
     pessoas.endereco_id,
     pessoas.nome, 
-    pessoas.senha, 
+    pessoas.senha,
     pessoas.cpf, 
     pessoas.rg, 
     pessoas.data_nascimento, 
@@ -40,6 +40,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     INNER JOIN estados ON enderecos.estado_id = estados.id
     WHERE pessoas.id = ".intval($_SESSION["userId"]);
     $_SESSION['usuario'] =  $connection->execute($sql)->fetchAll(PDO::FETCH_ASSOC);
+
 
 
     $sql= "SELECT * FROM telefones WHERE id_pessoa = ".intval($_SESSION["userId"]);

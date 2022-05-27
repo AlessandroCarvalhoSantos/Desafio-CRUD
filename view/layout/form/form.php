@@ -15,7 +15,9 @@ if(isset($_SESSION['usuario'][0]['data_atualizacao'])){
 
 if(isset($_SESSION['usuario'][0]['cpf'])){
     $cpf= $_SESSION['usuario'][0]['cpf'];
+    $readonly = "readonly";
 }else{
+    $readonly = "";
     $cpf="";
 }
 
@@ -41,9 +43,52 @@ if(isset($_SESSION['usuario'][0]['data_cadastro'])){
 
 
 
+if(isset($_SESSION['usuario'][0]['nome'])){
+    $nome = $_SESSION['usuario'][0]['nome'];
+}else{
+    $nome="";
+}
+
+
+if(isset($_SESSION['usuario'][0]['endereco'])){
+    $endereco = $_SESSION['usuario'][0]['endereco'];
+}else{
+    $endereco="";
+}
+
+if(isset($_SESSION['usuario'][0]['cep'])){
+    $cep = $_SESSION['usuario'][0]['cep'];
+}else{
+    $cep="";
+}
+
+if(isset($_SESSION['usuario'][0]['numero'])){
+    $numero = $_SESSION['usuario'][0]['numero'];
+}else{
+    $numero="";
+}
 
 
 
+
+if(isset($_SESSION['usuario'][0]['ufSigla'])){
+    $uf = $_SESSION['usuario'][0]['ufSigla'];
+}else{
+    $uf="";
+}
+
+if(isset($_SESSION['usuario'][0]['endereco_id'])){
+    $enderecoId = $_SESSION['usuario'][0]['endereco_id'];
+}else{
+    $enderecoId="";
+}
+
+
+if(isset($_SESSION['usuario'][0]['id'])){
+    $pessoaId = $_SESSION['usuario'][0]['id'];
+}else{
+    $pessoaId="";
+}
 
 
 
@@ -63,69 +108,97 @@ if(isset($_SESSION['usuario'][0]['data_cadastro'])){
 
             <input type="date" hidden class="form-control shadow-none"  name="dtAtualizacao" value="<?=$dtAtualizacao?>">
             <input type="date" hidden class="form-control shadow-none"  name="dtExclusao" value="<?=$dtExclusao?>">
+            <input type="text" hidden class="form-control shadow-none"  name="endenecoId" value="<?=$enderecoId?>">
+            <input type="text" hidden class="form-control shadow-none"  name="pessoaId" value="<?=$pessoaId?>">
 
 
-    
 
             <div class="col-md-3">
                 <label class="form-label"><b>CPF:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="cpf" maxlength="11" value="<?=$cpf?>" required readonly>
+                <input type="text" class="form-control shadow-none" oninput="cpfMask(this)" name="cpf" maxlength="11" value="<?=$cpf?>" required <?=$readonly?>>
             </div>
 
             <div class="col-md-3">
                 <label class="form-label"><b>RG:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="rg" maxlength="20" require value="<?=$rg?>">
+                <input type="text" class="form-control shadow-none" oninput="string(this)" name="rg" maxlength="20" required value="<?=$rg?>">
             </div>
 
             <div class="col-md-3">
                 <label  class="form-label"><b>Data de nascimento:</b></label>
-                <input type="date" class="form-control shadow-none"  name="dtNasc" require value="<?=$dtNascimento?>">
+                <input type="date" class="form-control shadow-none"  name="dtNascimento" required value="<?=$dtNascimento?>">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label"><b>Data de Cadastro:</b></label>
-                <input type="date" class="form-control shadow-none"  name="dtNasc" require value="<?=$dtCadastro?>">
-            </div>
-        
-            <div class="col-md-6">
-                <label class="form-label"><b>Nome:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
+                <input type="date" class="form-control shadow-none"  name="dtCadastro" required value="<?=$dtCadastro?>">
             </div>
 
-            <div class="col-md-6">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control shadow-none" oninput="string(this)" name="inputEmail" oninput="emailMask(this)" maxlength="100" >
+            <div class="col-md-12">
+                <label class="form-label"><b>Nome:</b></label>
+                <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" required value="<?=$nome?>">
             </div>
+
 
             <div class="col-md-6">
                 <label class="form-label">Senha:</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="inputPassword" id="inputPassword" minlength=5 maxlength=50>
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha1"  minlength="5" maxlength="16">
             </div>
            
             <div class="col-md-6">
                 <label class="form-label">Senha (Novamente):</label>
-                <input type="password" class="form-control shadow-none" oninput="string(this)" name="inputPassword2" id="inputPassword2" oninput="check(this)" minlength="5" maxlength="50">
+                <input type="password" class="form-control shadow-none" oninput="string(this)" name="senha2"  minlength="5" maxlength="50">
             </div>
 
-
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <label class="form-label"><b>Estado:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
+
+                <select  name="uf" required class="form-control shadow-none" >
+                    <option value="" <?= ($uf == '')?"selected":""?>>Selecionar estado</option>
+                    <option value="AC" <?= ($uf == 'AC')?"selected":""?>>Acre</option>
+                    <option value="AL" <?= ($uf == 'AL')?"selected":""?>>Alagoas</option>
+                    <option value="AP" <?= ($uf == 'AP')?"selected":""?>>Amapá</option>
+                    <option value="AM" <?= ($uf == 'AM')?"selected":""?>>Amazonas</option>
+                    <option value="BA" <?= ($uf == 'BA')?"selected":""?>>Bahia</option>
+                    <option value="CE" <?= ($uf == 'CE')?"selected":""?>>Ceará</option>
+                    <option value="DF" <?= ($uf == 'DF')?"selected":""?>>Distrito Federal</option>
+                    <option value="ES" <?= ($uf == 'ES')?"selected":""?>>Espírito Santo</option>
+                    <option value="GO" <?= ($uf == 'GO')?"selected":""?>>Goiás</option>
+                    <option value="MA" <?= ($uf == 'MA')?"selected":""?>>Maranhão</option>
+                    <option value="MT" <?= ($uf == 'MT')?"selected":""?>>Mato Grosso</option>
+                    <option value="MS" <?= ($uf == 'MS')?"selected":""?>>Mato Grosso do Sul</option>
+                    <option value="MG" <?= ($uf == 'MG')?"selected":""?>>Minas Gerais</option>
+                    <option value="PA" <?= ($uf == 'PA')?"selected":""?>>Pará</option>
+                    <option value="PB" <?= ($uf == 'PB')?"selected":""?>>Paraíba</option>
+                    <option value="PR" <?= ($uf == 'PR')?"selected":""?>>Paraná</option>
+                    <option value="PE" <?= ($uf == 'PE')?"selected":""?>>Pernambuco</option>
+                    <option value="PI" <?= ($uf == 'PI')?"selected":""?>>Piauí</option>
+                    <option value="RJ" <?= ($uf == 'RJ')?"selected":""?>>Rio de Janeiro</option>
+                    <option value="RN" <?= ($uf == 'RN')?"selected":""?>>Rio Grande do Norte</option>
+                    <option value="RS" <?= ($uf == 'RS')?"selected":""?>>Rio Grande do Sul</option>
+                    <option value="RO" <?= ($uf == 'RO')?"selected":""?>>Rondônia</option>
+                    <option value="RR" <?= ($uf == 'RR')?"selected":""?>>Roraima</option>
+                    <option value="SC" <?= ($uf == 'SC')?"selected":""?>>Santa Catarina</option>
+                    <option value="SP" <?= ($uf == 'SP')?"selected":""?>>São Paulo</option>
+                    <option value="SE" <?= ($uf == 'SE')?"selected":""?>>Sergipe</option>
+                    <option value="TO" <?= ($uf == 'TO')?"selected":""?>>Tocantins</option>
+                </select>
             </div>
 
-            <div class="col-md-12">
-                <label class="form-label"><b>Endereco:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
-            </div>
-
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <label class="form-label"><b>CEP:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
+                <input type="text" class="form-control shadow-none" oninput="cepMask(this)" name="cep" maxlength="9" required value="<?=$cep?>" >
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-8">
+                <label class="form-label"><b>Endereco:</b></label>
+                <input type="text" class="form-control shadow-none" oninput="string(this)" name="endereco" maxlength="50" required value="<?=$endereco?>">
+            </div>
+
+      
+
+            <div class="col-md-4">
                 <label class="form-label"><b>Número:</b></label>
-                <input type="text" class="form-control shadow-none" oninput="string(this)" name="nome" maxlength="50" >
+                <input type="text" class="form-control shadow-none" oninput="string(this)" name="numero" maxlength="10" required value="<?=$numero?>">
             </div>
 
             <?php
