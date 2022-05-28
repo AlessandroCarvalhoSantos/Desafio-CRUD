@@ -84,17 +84,22 @@ class Pessoa{
         $connection->executeConnection();
         $connection->setTable('telefones');
 
-        $where = 'id_pessoa ='. intval($this->id); 
-        $connection->delete($where);
+        if(isset($dados['telefones'])){
 
-        for($i=0; $i<count($dados['telefones']); $i++){
+            $where = 'id_pessoa ='. intval($this->id); 
+            $connection->delete($where);
 
-            $telefone = array(
-                "id_pessoa"=> $this->id,
-                "telefone"=> $dados['telefones'][$i]['telefone']
-            );
-            $connection->insert($telefone);
+            for($i=0; $i<count($dados['telefones']); $i++){
+
+                $telefone = array(
+                    "id_pessoa"=> $this->id,
+                    "telefone"=> $dados['telefones'][$i]['telefone']
+                );
+                $connection->insert($telefone);
+            }
         }
+
+        
 
     }
 
@@ -249,13 +254,15 @@ class Pessoa{
 
     private function padraoDados($dados){
 
-        for($i=0; $i <count($dados['telefoneId']); $i++){
-            $aux['id'] = $dados['telefoneId'][$i];
-            $aux['telefone'] = $dados['telefone'][$i];
-            $dados["telefones"][] = $aux;
+        if(isset($dados['telefoneId'])){
+            for($i=0; $i <count($dados['telefoneId']); $i++){
+                $aux['id'] = $dados['telefoneId'][$i];
+                $aux['telefone'] = $dados['telefone'][$i];
+                $dados["telefones"][] = $aux;
+            }
+            unset($dados['telefoneId']);
+            unset($dados['telefone']);
         }
-        unset($dados['telefoneId']);
-        unset($dados['telefone']);
 
         return $dados;
     }
@@ -271,11 +278,59 @@ class Pessoa{
 
 
     public function dataInsert($dados){
-        
+
+        $dados = $this->padraoDados($dados);
+
+
+        $res = $this->isValidSenha($dados, true);
+        if(!$res) return $res;
+        $res = $this->isValidCpf($dados, true);
+        if(!$res) return $res;
+        $res = $this->isValidUf($dados);
+        if(!$res) return $res;
+
+        $this->setBaseData($dados);
+  
+
+        $this->data_cadastro = strval(Date('Y-m-d'));
+        $this->data_exclusao = null;
+        $this->data_atualizacao = null;
+
+        $enderecos = $this->setArryEnderecos();
+
+        $connection = new ConnectionMySql();
+        $connection->executeConnection();
+
+        $connection->setTable('enderecos');
+        $this->endereco_id=$connection->insert($enderecos);
+
+
+        $pessoa = $this->setArryPessoas();
+        $connection->setTable('pessoas');
+        $this->id=$connection->insert($pessoa);
+
+
+        $this->insertUpdateTelefones($dados);
+
+        $_SESSION['usuario'][0] = $dados; 
+        $_SESSION['usuario']['telefones'] = $dados['telefones']; 
+
+        return $res;
     }
 
     public function dataDelete($dados){
-        
+
+        $pessoa = array(
+            "data_exclusao"=> date('Y-m-d')
+        );
+
+        $connection = new ConnectionMySql();
+        $connection->executeConnection();
+        $connection->setTable('pessoas');
+        $where = "id = ". $dados['codPessoa'];
+        $connection->update($pessoa, $where);
+
+        return true;
     }
 
 

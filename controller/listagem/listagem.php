@@ -29,7 +29,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     $pageInitial->setNamePage("listagem", "php");
     $pageInitial->execute();
 }else{
-    header("location: ../../controller/negado");
+    header("location: ../../controller/negado.php");
     exit();
 }
 

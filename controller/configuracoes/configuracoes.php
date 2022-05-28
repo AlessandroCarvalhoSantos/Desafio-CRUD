@@ -55,7 +55,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     $pageInitial->setNamePage("configuracoes", "php");
     $pageInitial->execute();
 }else{
-    header("location: ../../controller/negado");
+    header("location: ../../controller/negado/negado.php");
     exit();
 }
 

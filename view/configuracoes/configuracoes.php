@@ -1,7 +1,7 @@
 <?php
 
 
-
+$readonly = "readonly";
 $senhaRequired= "";
 $nomeBotao = "Atualizar";
 $formPost = $this->variablePath."controller/configuracoes/updateDados.php";

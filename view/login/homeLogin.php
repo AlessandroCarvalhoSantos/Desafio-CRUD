@@ -16,7 +16,7 @@
                             </p>
 
                             <p>É novo? Então cadastre-se aqui!</p>
-                            <a  href="./home/cadastro/" class="btn btn-light">Cadastre-se</a>
+                            <a  href="<?=$this->variablePath?>controller/cadastro/cadastro.php" class="btn btn-light">Cadastre-se</a>
                         </div>
                     </div>
                         
@@ -93,7 +93,7 @@
                            
                         
                                 <div class="row justify-content-center">
-                                    <a  href="./home/Senha/" class="text-center text-decoration-none pt-2 text-secondary w-100">Esqueceu sua senha?</a>
+                                    <a  href="<?=$this->variablePath."controller/login/esqueceuSenha.php"?>" class="text-center text-decoration-none pt-2 text-secondary w-100">Esqueceu sua senha?</a>
                                 </div>
 
                                 <br>

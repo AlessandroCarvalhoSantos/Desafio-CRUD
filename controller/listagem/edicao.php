@@ -68,7 +68,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     }
   
 }else{
-    header("location: ../../controller/negado");
+    header("location: ../../controller/negado.php");
     exit();
 }
 

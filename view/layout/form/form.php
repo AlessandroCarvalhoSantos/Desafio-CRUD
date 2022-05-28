@@ -15,9 +15,8 @@ if(isset($_SESSION['usuario'][0]['data_atualizacao'])){
 
 if(isset($_SESSION['usuario'][0]['cpf'])){
     $cpf= $_SESSION['usuario'][0]['cpf'];
-    $readonly = "readonly";
+    
 }else{
-    $readonly = "";
     $cpf="";
 }
 
@@ -242,7 +241,8 @@ if(isset($_SESSION['usuario'][0]['senha2'])){
 
             <div class="col-12 d-flex justify-content-center">
                 <button type="submit" onclick="diseabledButton(this);" class="btn btn-success rounded-pill fw-bold px-5"><?=$nomeBotao?></button>
-                <a type="button" class="btn btn-danger rounded-pill fw-bold px-5 ms-4" href="<?=$this->variablePath."controller/home/home.php"?>">Cancelar</a>
+                <a type="button" class="btn btn-danger rounded-pill fw-bold px-5 ms-4" href="
+                <?=($_SESSION['type'] == 'a')?$this->variablePath."controller/home/home.php":$this->variablePath;?>">Cancelar</a>
             </div>
     
     

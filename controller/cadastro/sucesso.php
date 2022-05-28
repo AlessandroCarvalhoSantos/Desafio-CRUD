@@ -14,12 +14,12 @@ $sessionPage->initializeSession();
 
 
 
-if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 'a'){
-   
+if($sessionPage->isValidToken($_SESSION["token"])){
+
     $pageInitial->setVariablePath("../../");
     $pageInitial->setTitlePage("Home");
-    $pageInitial->setPathPage("view/home/");
-    $pageInitial->setNamePage("home", "php");
+    $pageInitial->setPathPage("view/cadastro/");
+    $pageInitial->setNamePage("sucesso", "php");
     $pageInitial->execute();
 }else{
     header("location: ../../controller/negado/negado.php");

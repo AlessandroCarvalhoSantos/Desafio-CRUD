@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="PageHeaderAdm">
     <div class="container-fluid">
 
-        <img class="navbar-brand" src="<?=$this->variablePath."assets/img/webdecLogoNome.png"?>" style="width:100px;">
-
+        <a href="https://www.webdec.com.br/" target="_blank">
+            <img class="navbar-brand" src="<?=$this->variablePath."assets/img/webdecLogoNomeBranco.png"?>" style="width:100px;">
+        </a>
         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar">
             <span class="fas fa-bars"></span>
         </button>

@@ -2,11 +2,10 @@
 
 require_once __DIR__."/../../vendor/autoload.php";
 
-
+use Model\ClassDatabase\ConnectionMySql;
 use Model\ClassFitterPages\FitterPages;
 use Model\ClassManagementSession\ManagementSession;
 use Model\ClassPessoa\Pessoa;
-
 
 $sessionPage = new ManagementSession; 
 $pageInitial = new FitterPages; 
@@ -14,21 +13,22 @@ $pageInitial = new FitterPages;
 $sessionPage->initializeSession(); 
 
 
+
+
 if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 'a'){
 
+    if(isset($_POST['codPessoa'])){
 
+      
+        $pessoa = new Pessoa;
 
-    if(isset($_POST)){
-
-
-        $pessoa = new Pessoa();
-        $res = $pessoa->dataUpdate($_POST);
+        $res = $pessoa->dataDelete($_POST);
 
         if($res){
-            $_SESSION['sucesso'] = "Dados Atualizados com sucesso";
+            $_SESSION['sucesso'] = "Dado deletado com sucesso";
         }
      
-        header("location: ../../controller/configuracoes/configuracoes.php");
+        header("location: ../../controller/listagem/listagem.php");
         exit();
 
     }
@@ -38,7 +38,7 @@ if($sessionPage->isValidToken($_SESSION["token"]) && $sessionPage->getType() == 
     }
   
 }else{
-    header("location: ../../controller/negado/negado.php");
+    header("location: ../../controller/negado.php");
     exit();
 }
 

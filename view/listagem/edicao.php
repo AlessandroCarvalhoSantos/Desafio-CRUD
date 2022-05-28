@@ -2,7 +2,7 @@
 
 
 
-// $senhaRequired= "required";
+$readonly = "readonly";
 $senhaRequired= "";
 $nomeBotao = "Atualizar";
 $formPost = $this->variablePath."controller/listagem/updateDados.php";
