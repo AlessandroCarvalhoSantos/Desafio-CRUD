@@ -136,7 +136,7 @@ if(isset($_SESSION['usuario'][0]['senha2'])){
     <form method="POST"  class="row g-3" action="<?=$formPost?>">
            
             <div class="col-12  text-center text-md-start">
-                <h3 class="m-0 mb-1 pt-2 fw-bold">Cadastrar pessoa</h3>
+                <h3 class="m-0 mb-1 pt-2 fw-bold"><?=$titulo?></h3>
             </div>
 
             <input type="date" hidden class="form-control shadow-none"  name="data_atualizacao" value="<?=$dtAtualizacao?>">

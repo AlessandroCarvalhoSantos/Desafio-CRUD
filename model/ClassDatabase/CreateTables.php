@@ -6,35 +6,39 @@ use Model\ClassDatabase\ConnectionMySql;
 use Model\ClassEncryptDecrypt\EncryptDecrypt;
 use PDO;
 
+//Respossável por identificar se existe uma tabela no banco e cria ela
+//Inseri alguns dados como estados e um usuário com dois telefones
+
 class CreateTables{
 
     private $connection=null;
      
+    //Verifica a existência da tabela
     public function verifyTables(){
 
         $this->connection = new ConnectionMySql();
         $this->connection->executeConnection();
+        //Puxa o nome de todas as tabelas no banco
         $dados =  $this->connection->execute("SHOW TABLES;")->fetchAll(PDO::FETCH_COLUMN);
 
- 
 
         if(!in_array("estados", $dados)){
-            $this->createTableEstados();
-            $this->insertUF();
+            $this->createTableEstados(); //Cria a tabela estado
+            $this->insertUF(); // Inseri os estados no banco
         }
 
         if(!in_array("enderecos", $dados)){
-            $this->createTableEnderecos();
+            $this->createTableEnderecos(); //Cria a tabela de endereços
         }
 
         if(!in_array("pessoas", $dados)){
-            $this->createTablePessoas();
-            $this->insertPessoas();
+            $this->createTablePessoas(); //Cria a tabela de pessoas
+            $this->insertPessoas(); // Inseri um usuário no banco como padrão
         }
 
         if(!in_array("telefones", $dados)){
-            $this->createTableTelefone();
-            $this->insertTelefones();
+            $this->createTableTelefone(); //Cria a tabela de telefone
+            $this->insertTelefones(); // Inseri o telefone do usuário no banco
         }
     }
 
